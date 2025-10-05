@@ -1,45 +1,64 @@
 const rootElemHandler = document.getElementById("root");
 
-/** *************** SNACK 1 *************** */
+const array1 = [1, 2, 3, 4, 5];
+const array2 = ["a", "b", "c"];
+/** *************** SNACK 4 *************** */
 // Main Code
-const biciclette = [
-    { nome: "Mountain Bike", peso: 14 },
-    { nome: "Bici da Corsa", peso: 7 },
-    { nome: "Bici da Città", peso: 12 },
-    { nome: "Bici Elettrica", peso: 22 },
-    { nome: "Bici Pieghevole", peso: 11 },
-    { nome: "BMX", peso: 10 },
-    { nome: "Gravel Bike", peso: 9 },
-    { nome: "Fat Bike", peso: 16 },
-    { nome: "Tandem", peso: 20 },
-    { nome: "Cruiser", peso: 13 }
-];
+console.log("Snack4");
+const mergeTestV1 = mergeTwoArrayV1(array1, array2);
+console.log("mergeTestV1", mergeTestV1);
 
-const biciclettaLeggera = findLighterBicycle(biciclette);
-console.log("biciclettaLeggera", biciclettaLeggera);
-rootElemHandler.innerHTML = `
-    <div>
-        <h2>Bici piu legera:</h2>
-        <p>Nome: ${biciclettaLeggera.nome}</p>
-        <p>Peso: ${biciclettaLeggera.peso}</p>
-    </div>
-`
+const mergeTestV2 = mergeTwoArrayV2(array1, array2);
+console.log("mergeTestV2", mergeTestV2);
+
+
 // Function Definition
 /**
- * Description: Function that finds the element of the array with the lowest weight. Returns the element
- * @param {Array} arrayBicycle
- * @returns {Object}
+ * Descrition: funcion return a new array that marge two array reading alternatively value from the array
+ * @param {Array} inputArray1 
+ * @param {Array} inputArray2 
+ * @returns {Array}
  */
-
-function findLighterBicycle(arrayBicycle) {
-    let lighterBicycle = arrayBicycle[0];
-    for (let i = 1; i < arrayBicycle.length; i++) {
-        const curBicycle = arrayBicycle[i];
-        if (curBicycle.peso < lighterBicycle.peso) {
-            lighterBicycle = curBicycle;
+function mergeTwoArrayV1(inputArray1, inputArray2) {
+    const resultArray = [];
+    for (let i = 0; i < Math.max(inputArray1.length, inputArray2.length); i++) {
+        const curElemArray1 = inputArray1[i];
+        const curElemArray2 = inputArray2[i];
+        if (curElemArray1) {
+            resultArray.push(curElemArray1)
+        }
+        if (curElemArray2) {
+            resultArray.push(curElemArray2)
         }
     }
-    return lighterBicycle
+    return resultArray;
 }
 
-/** *************** /SNACK 1 *************** */
+// Function Definition
+/**
+ * Descrition: funcion return a new array that marge two array reading alternatively value from the array
+ * Extra test that use some ready-to-use array function
+ * @param {Array} inputArray1 
+ * @param {Array} inputArray2 
+ * @returns {Array}
+ */
+function mergeTwoArrayV2(inputArray1, inputArray2) {
+    const resultArray = [];
+    for (let i = 0; i < Math.min(inputArray1.length, inputArray2.length); i++) {
+        const curElemArray1 = inputArray1[i];
+        const curElemArray2 = inputArray2[i];
+        resultArray.push(curElemArray1)
+        resultArray.push(curElemArray2)
+    }
+    if (inputArray1.length < inputArray2.length) {
+        const residualArray = inputArray2.slice(inputArray1.length);
+        resultArray.push(residualArray);
+    } else if (inputArray1.length > inputArray2.length) {
+        const residualArray = inputArray1.slice(inputArray2.length);
+        resultArray.push(...residualArray);
+    }
+    return resultArray;
+}
+
+
+/** *************** /SNACK 4 *************** */
