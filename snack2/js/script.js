@@ -20,10 +20,12 @@ const footballTeams = [
   { nome: "Empoli", puntiFatti: 0, falliSubiti: 0 }
 ];
 
-console.log(footballTeams);
+console.log(JSON.parse(JSON.stringify(footballTeams)));
 applyRandomValue(footballTeams);
 console.log(footballTeams);
 
+// Soluzione1: "bocciatta" xkè non efficiente rispetto alla richeista
+/**
 const compressedTeams = [];
 for (i = 0; i < footballTeams.length; i++) {
   const curTeam = footballTeams[i];
@@ -36,6 +38,18 @@ for (i = 0; i < footballTeams.length; i++) {
     }
   }
   // console.log("newDataTeam", newDataTeam);
+  compressedTeams.push(newDataTeam);
+}
+console.log("compressedTeams", compressedTeams);
+ */
+// soluzione2: post call tuttor, piu efficiente rispetto a quanto richiesto dal topic
+const compressedTeams = [];
+for (i = 0; i < footballTeams.length; i++) {
+  const curTeam = footballTeams[i];
+  const newDataTeam = {
+    nome: curTeam.nome,
+    falliSubiti: curTeam.falliSubiti
+  };
   compressedTeams.push(newDataTeam);
 }
 console.log("compressedTeams", compressedTeams);

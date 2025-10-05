@@ -1,6 +1,6 @@
 const rootElemHandler = document.getElementById("root");
 
-/** *************** SNACK 1 *************** */
+/** *************** SNACK 3 *************** */
 // Main Code
 const biciclette = [
     { nome: "Mountain Bike", peso: 14 },
@@ -42,4 +42,4 @@ function findLighterBicycle(arrayBicycle) {
     return lighterBicycle
 }
 
-/** *************** /SNACK 1 *************** */
+/** *************** /SNACK31 *************** */
