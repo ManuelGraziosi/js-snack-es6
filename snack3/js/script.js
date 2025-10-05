@@ -14,32 +14,27 @@ const biciclette = [
     { nome: "Tandem", peso: 20 },
     { nome: "Cruiser", peso: 13 }
 ];
-
-const biciclettaLeggera = findLighterBicycle(biciclette);
-console.log("biciclettaLeggera", biciclettaLeggera);
-rootElemHandler.innerHTML = `
-    <div>
-        <h2>Bici piu legera:</h2>
-        <p>Nome: ${biciclettaLeggera.nome}</p>
-        <p>Peso: ${biciclettaLeggera.peso}</p>
-    </div>
-`
-// Function Definition
+console.log(JSON.parse(JSON.stringify(biciclette)));
+findSubArray(biciclette, 2, 4);
+// Function definition
 /**
- * Description: Function that finds the element of the array with the lowest weight. Returns the element
- * @param {Array} arrayBicycle
- * @returns {Object}
+ * Description: function return a subarray of element who index is included in the range [inputLowerIndex, inputHigherIndex]
+ * Note: need to add input index controll (wip)
+ * @param {Array} inputArray 
+ * @param {Number} inputLowerIndex 
+ * @param {Number} inputHigherIndex 
+ * @returns {Array}
  */
-
-function findLighterBicycle(arrayBicycle) {
-    let lighterBicycle = arrayBicycle[0];
-    for (let i = 1; i < arrayBicycle.length; i++) {
-        const curBicycle = arrayBicycle[i];
-        if (curBicycle.peso < lighterBicycle.peso) {
-            lighterBicycle = curBicycle;
-        }
+function findSubArray(inputArray, inputLowerIndex, inputHigherIndex) {
+    const resultArray = [];
+    for (let i = inputLowerIndex; i <= inputHigherIndex; i++) {
+        console.log(`----Iterazione N:${i}----`);
+        const curElem = inputArray[i];
+        console.log("curElem", curElem);
+        resultArray.push(curElem);
     }
-    return lighterBicycle
+    console.log("resultArray", resultArray);
+    return resultArray;
 }
 
-/** *************** /SNACK31 *************** */
+/** *************** /SNACK3 *************** */
